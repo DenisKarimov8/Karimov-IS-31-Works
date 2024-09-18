@@ -219,3 +219,4 @@ erDiagram
     CUSTOMERSUPPORT ||--o{ FAQ : provides
     CUSTOMERSUPPORT ||--o{ FEEDBACKSYSTEM : handles
 ```
+![color picker](https://tenor.com/ru/view/big-smoke-number9-number-nine-gif-5899637)
