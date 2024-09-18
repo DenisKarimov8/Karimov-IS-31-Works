@@ -1,7 +1,11 @@
 🟠Доставка еды франшизы "DoDo pizza"🟠
 
 
-![color picker](https://c.tenor.com/H0B1qlt_eY4AAAAC/tenor.gif)
+![color picker](https://c.tenor.com/H0B1qlt_eY4AAAAC/tenor.gif)  
+<img width="1440" height="250" alt="color picker" src="https://c.tenor.com/H0B1qlt_eY4AAAAC/tenor.gif" />
+
+<img width="1600" height="250" src="tenor.gif" alt="color picker" />
+
 -----------------
 
 Причина разработки
@@ -219,4 +223,5 @@ erDiagram
     CUSTOMERSUPPORT ||--o{ FAQ : provides
     CUSTOMERSUPPORT ||--o{ FEEDBACKSYSTEM : handles
 ```
-![color picker](https://tenor.com/ru/view/big-smoke-number9-number-nine-gif-5899637)
+
+
