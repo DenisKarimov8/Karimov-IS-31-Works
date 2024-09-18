@@ -1,4 +1,7 @@
 🟠Доставка еды франшизы "DoDo pizza"🟠
+
+
+![color picker](https://c.tenor.com/H0B1qlt_eY4AAAAC/tenor.gif)
 -----------------
 
 Причина разработки
@@ -119,42 +122,32 @@
 -------------------------
 
 
-1) Диаграмма активность
+Диаграмма активность
+   
+Пояснение:
+1. Запуск приложения
+2. Авторизация пользователя
+3. Главная страница после авторизации
+4. Меню, Корзина и Личный кабинет
+5. Процесс заказа
+6. Административная панель - интерфейс, доступный только администраторам приложения. Через эту панель администраторы могут выполнять действия
+7. Выход из приложения
 ```mermaid
 flowchart TD
     A[Запуск приложения] --> B[Авторизация пользователя]
     B --> C[Главная страница]
-    C --> D[Отображение меню]
-    C --> E[Поиск по меню]
+    C --> D[Меню]
     C --> F[Корзина]
     C --> G[Личный кабинет]
     
-    F --> H[Изменение количества товара]
-    F --> I[Удаление товара]
     F --> J[Перейти к заказу]
-    
-    G --> K[Просмотр профиля]
-    G --> L[История заказов]
-    G --> M[Настройки аккаунта]
-    
     J --> N[Выбор товаров]
-    N --> O[Применение промокода]
-    O --> P
     N --> P[Подтверждение заказа]
-    
     P --> Q[Выбор метода оплаты]
     Q --> R[Обработка платежа]
-    R --> S[Ожидание доставки или возврата средств]
-    S --> T[Получение подтверждения]
     
-    C --> U[Чат поддержки]
-    C --> V[FAQ]
-    C --> W[Обратная связь]
-  
     X[Административная панель] --> Y[Управление пользователями]
     X --> Z[Управление заказами]
-    X --> AA[Aналитика продаж]
-    X --> BB[Маркетинг и акции]
     
     DD[Выход из приложения]
 
@@ -162,95 +155,67 @@ flowchart TD
 ```
 -------------------------
 
-2) Диаграмма классов.
+Диаграмма классов  
 
+Пояснение:
+1. Пользователь создает заказ
+2. Элементы меню включаются в заказ
+3. Заказ обрабатывает платеж
+4. Заказ отправляется на доставку
+5. Администратор управляет пользователями и следит за заказами
 ```mermaid
 classDiagram
     class User {
         +registration()
-        +deleteUser()
         +updateProfile()
-        +loyaltyProgram()
     }
 
     class MenuItem {
         +addItem()
-        +updateItem()
-        +removeItem()
         +setPrice()
-        +setCategory()
     }
 
     class Order {
         +createOrder()
-        +updateOrderStatus()
-        +getOrderHistory()
         +calculateTotal()
     }
 
     class Payment {
         +processPayment()
-        +refund()
-        +applyPromocode()
     }
 
     class Delivery {
         +trackOrder()
-        +optimizeRoute()
-        +estimateDeliveryTime()
     }
 
     class Admin {
         +manageUsers()
         +manageOrders()
-        +manageMenuItems()
-        +runAnalytics()
-        +manageMarketingCampaigns()
     }
 
-    class Marketing {
-        +createPromocode()
-        +manageLoyaltyProgram()
-        +manageSpecialOffers()
-        +manageNewArrivals()
-    }
-
-    class CustomerSupport {
-        +handleChatRequests()
-        +processCallCenterInquiries()
-        +manageFAQ()
-        +collectFeedback()
-    }
-
-    User -- Order : creates
-    Menu -- MenuItem : contains
-    Order -- Payment : processes
-    Order -- Delivery : ships
-    Admin -- User : manages
-    Admin -- Order : oversees
-    Admin -- Marketing : manages
-    Admin -- CustomerSupport : supervises
-    Marketing -- Promocode : manages
-    Marketing -- LoyaltyProgram : manages
-    Marketing -- SpecialOffer : manages
-    Marketing -- NewArrival : manages
-    CustomerSupport -- FAQ : maintains
-    CustomerSupport -- FeedbackSystem : manages
+    User -- Order : создает
+    MenuItem -- Order : включает
+    Order -- Payment : процесс
+    Order -- Delivery : отправка
+    Admin -- User : управляет
+    Admin -- Order : контроль
 ```
 
 -------------------------
 
-3) Диаграмма сценария.
+Диаграмма сценария  
+Пояснение:  
+Диаграмма показывает, как разные роли в системе взаимодействуют друг с другом, чтобы обеспечить работу сервиса от создания заказов до управления пользователями и поддержки клиентов
 ```mermaid
 erDiagram
-    User ||--o{ Order : creates
-    User ||--o{ Payment : pays
-    Order ||--o{ Payment : contains
-    Admin ||--o{ User : manages
-    Admin ||--o{ Order : oversees
-    Admin ||--o{ MenuItem : manages
-    Marketing ||--o{ Promocode : creates
-    CustomerSupport ||--o{ FAQ : contains
-    CustomerSupport ||--o{ FeedbackSystem : manages
-
+    USER ||--o{ ORDER : creates
+    USER ||--o{ PAYMENT : makes
+    ORDER ||--|{ PAYMENT : includes
+    ADMIN ||--o{ USER : manages
+    ADMIN ||--o{ ORDER : oversees
+    ADMIN ||--o{ MENUITEM : manages
+    MARKETING ||--o{ PROMOCODE : generates
+    MARKETING ||--o{ CAMPAIGN : manages
+    CUSTOMERSUPPORT ||--o{ FAQ : provides
+    CUSTOMERSUPPORT ||--o{ FEEDBACKSYSTEM : handles
 ```
