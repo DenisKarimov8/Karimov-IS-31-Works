@@ -226,4 +226,7 @@ erDiagram
     CUSTOMERSUPPORT ||--o{ FEEDBACKSYSTEM : handles
 ```
 
+-------------------------
+
+Conflict приди conflict приди
 
